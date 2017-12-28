@@ -1,0 +1,27 @@
+{
+    "name": "koa-mongo",
+    "version": "0.0.1",
+    "description": "Koa middleware with mongoose and mongoose-redis-cache",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "koa": "^2.4.1",
+        "mongoose": "~0.10.0",
+        "mongoose-redis-cache": "~0.0.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/qyou/koa-mongo.git"
+    },
+    "keywords": [
+        "koa",
+        "mongodb",
+        "mongoose",
+        "redis",
+        "cache"
+    ],
+    "author": "Summer You <qyou AT nlpr.ia.ac.cn>"
+}
