@@ -1,21 +1,21 @@
 /**
  * koa-mongo middleware with mongoose and mongoose-redis-cache
- *
+ * 
  * Example:
  *      const UserSchema = new mongoose.Schema({
  *          username: String,
  *          password: String
- *      })
+ *      }) 
  *      // set redis cache
  *      UserSchema.set('redisCache', true)
  *      UserSchema.set('expires', 30)   // default is 60 seconds
  *      const UserModel = mongoose.model('User', UserSchema, 'user')
- *
- * See: mongoose-redis-cache (https://github.com/conancat/mongoose-redis-cache)
- *
+ * 
+ * See: mongoose-redis-cache (https://github.com/conancat/mongoose-redis-cache)      
+ * 
  * Author:
- *      Summer You <qyou AT nlpr.ia.ac.cn>
- *
+ *      qyou <qyou AT nlpr.ia.ac.cn>
+ * 
  * License:
  *      MIT license
  */
@@ -46,14 +46,14 @@ function checkRedisOpts(redisOpts = {}) {
 }
 
 function omit(opts, key) {
-    if (key in opts) {
+    if (!(key in opts)) {
         return Object.assign({}, opts)
     }
-    const optsWithoutKey = Object.define(null)
+    const optsWithoutKey = Object.create(null)
     for (let k in opts) {
         if (k !== key) {
             optsWithoutKey[k] = opts[k]
-        }
+        } 
     }
     return optsWithoutKey
 }
@@ -65,12 +65,13 @@ const middleware = exports = module.exports = (opts, redisOpts) => {
     mongooseCache(mongoose, redisOpts) // use redis cache
 
     opts = checkOpts(opts)
-
+     
     const db = middleware.open(opts)
     return async(ctx, next) => {
         await next()
     }
 }
+
 
 middleware.open = function (opts) {
     const optsWithoutUri = omit(opts, 'uri')
